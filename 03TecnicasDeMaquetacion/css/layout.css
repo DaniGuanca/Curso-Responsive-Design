@@ -1,0 +1,75 @@
+/*
+Tecnica 1 FLOAT(left/right)
+En 1-Posicionamiento-Css.html esta algo de la teoria
+En clear la clase para limpiar asi no rompe el posicionamiento, y elijo todo lo que esta antes y despues
+*/
+
+.floatl {float: left}
+.floatr {float: right}
+.clear, .clear::after, .clear::before {clear: both;}
+
+/*Los pseudoelementos after y before siempre trabajan con content, que es donde especifico el contenido que van a mostrar antes o
+despues dependiendo de lo que elija
+Por defecto no tienen propiedades definidas asi que le pongo display block que es necesario para limpiar el float*/
+.clear::after, .clear::before {
+    content: "";
+    display: block;
+}
+
+/*
+Tecnica 2 Display Inline Block: basicamente a los elementos que estan juntos los pone en una misma fila y el resto arriba o abajo
+dependiendo donde estan. PERO IMPORTANTE ENTRE LOS ELEMENTOS JUNTOS PONE UN PEQUEÑO ESPACIO EN BLANCO, HAY QUE TENER EN CUENTA ESO
+PORQUE OCUPA % DEL WIDTH
+Por defecto el inline block tiene vertical align baseline que es la linea base donde se empieza a escribir una letra
+puedo cambiarlo a mi antojo por donde me resulte mejor por bottom middle o top
+
+Para arreglar ese espacio hago un font size 0 al elemento que contiene los items que
+                                  tienen el display inline block entonces estoy eliminando ese espacio en blanco
+*/
+.i-b {
+    display: inline-block;
+}
+
+.v-baseline{
+    vertical-align: baseline;
+}
+
+.v-bottom{
+    vertical-align:bottom;
+}
+
+.v-middle{
+    vertical-align: middle;
+}
+
+.v-top {
+    vertical-align: top;
+}
+
+.f-0{
+    font-size: 0;
+}
+
+
+
+/*Tecnica 3 Display table: le da estilo de tablas a las cajas*/
+.table{
+    display: table;
+}
+
+/*Se tiene que hacer una clase que simule las tr osea las filas pero mircha se la salta para que quede solo section y artiicle
+entonces seria table y td*/
+.table-cell{
+    display: table-cell;
+}
+/*y listo eso es todo, lo malo de esta tecnica es que hay que hacer siempre un padre table y los hijos td para simular tablas*/
+
+
+/*Tecnica 4 Display Flex:*/
+.flex{
+    display: flex;
+}
+
+.flex-item{
+    flex: none;
+}

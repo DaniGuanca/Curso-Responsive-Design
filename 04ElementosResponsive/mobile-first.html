@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+	<meta charset="UTF-8">
+	<title>Responsive Design Mobile First</title>
+	<meta name="description"
+		content="En este documento maquetaremos una plantilla de sitio web con Responsive Design y la filosofía Mobile First.">
+
+
+
+	<style>
+		/*lo de siempre, border box para que no aumenten los altos y anchos cuando aumente el margin y padding*/
+		html {
+			box-sizing: border-box;
+			font-family: sans-serif;
+			font: size 16px;
+			text-align: center;
+		}
+
+		/*le heredo el box sizin a todos los elementos*/
+		*,
+		*:before,
+		*:after {
+			box-sizing: inherit;
+			margin: 0;
+			padding: 0;
+			font-size: 1rem;
+		}
+
+		a {
+			color: #FF5700;
+			font-size: inherit;
+		}
+
+		a:hover {
+			color: #205081;
+		}
+
+		/*Figcaptions son los textos al pie de las imagenes*/
+		figcaption {
+			padding: 1rem;
+		}
+
+		/*hay que hacer flexibles las imagenes, estas 3 propiedades hacen un medio flexible*/
+		img {
+			max-width: 100%;
+			width: 100%;
+			height: auto;
+		}
+
+		header {
+			padding: 1rem;
+			color: #FFF;
+			background: #222;
+		}
+
+		.responsible img {
+			max-width: 75%;
+		}
+
+		.responsible {
+			display: block;
+			/*para que se centre es el margin*/
+			margin: auto;
+			width: 100%;
+			/*Como despues voy a usar inline block, siempre queda un espacio entre medio de los objetos y eso es porque cuenta el espacio de una letra por eso voy a poner font size a 0*/
+			font-size: 0;
+		}
+
+		.responsible figure {
+			padding: 1rem;
+		}
+
+		.responsible figcaption {
+			font-size: 2rem;
+		}
+
+		/*Ahora tengo que hacer la parte de mobile*/
+		/*
+			MIRCHA EN ESTE VIDEO TRABAJA CON ESOS EM, PERO EN TODOS LADOS USAN PX ASI QUE VOY A USAR PX
+			TODOS ESTOS BREAKPOINTS, ESTILOS GENERALES SON PARA MOBILE FIRST
+			Estilos Generales -480px
+			Breakpoints para Responsive Design Mobile First:			       
+			320px  480px  600px  768px  1024px  1200px
+			20em   30em   37.5em  48em   64em    7em
+		*/
+
+		/*Comienzo a hacer las media querys para los breakpoints, en mobile first va de la menor a la mayor*/
+		@media screen and (min-width: 768px) {
+			.header img {
+				max-width: 75%;
+			}
+
+			/*Recien aca empiezo a aplicar el display inline block porque en version chica solo uso una columna
+				EL DISPLAY LO CAMBIO UNA VEZ Y QUEDA PAR LA OTRAS*/
+			.responsible figure {
+				display: inline-block;
+				vertical-align: top;
+				width: 50%;
+			}
+		}
+
+		@media screen and (min-width: 1024px) {
+			.header img {
+				max-width: 50%;
+			}
+
+			.responsible figure {
+				width: 33.3%;
+			}
+		}
+
+		@media screen and (min-width: 1200px) {
+			.responsible img {
+				max-width: 50%;
+			}
+
+			.responsible figcaption {
+				font-size: 1.5em;
+			}
+
+			.responsible figure {
+				width: 25%;
+			}
+		}
+	</style>
+</head>
+
+<body>
+	<header class="header">
+		<figure>
+			<img src="img/mobile-first.jpg">
+			<figcaption>
+				Documento hecho con <i>Responsive Design</i> y la estrategia <i>Mobile First</i>
+			</figcaption>
+		</figure>
+		<a href="breakpoints.html">regresar</a>
+	</header>
+	<section class="responsible">
+		<figure>
+			<img src="img/html5.png">
+			<figcaption>HTML</figcaption>
+		</figure>
+		<figure>
+			<img src="img/css3.png">
+			<figcaption>CSS</figcaption>
+		</figure>
+		<figure>
+			<img src="img/javascript.png">
+			<figcaption>JavaScript</figcaption>
+		</figure>
+		<figure>
+			<img src="img/responsive.png">
+			<figcaption>Responsive</figcaption>
+		</figure>
+	</section>
+</body>
+
+</html>

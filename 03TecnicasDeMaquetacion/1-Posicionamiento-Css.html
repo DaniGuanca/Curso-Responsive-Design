@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<title>Posicionamiento CSS</title>
+	<style>        
+		html {
+            font-family:sans-serif;
+            font-size: 16px;
+        }
+
+        /* Por default todos los elementos tienen position static*/
+        div {
+            width: 300px;
+            height: 100px;
+            text-align: center;
+            color: #FFF;
+            background-color: #205081;
+            border: thin solid #FF5700;
+        }
+
+        /*POSICION RELATIVA*/
+        /*La posicion relativa dice que se desplaza respecto a su posicion original, la posicion original mi div relativa es justito abajo de
+        la div estatica, entonces a ponerle top 100px estoy alejandola 100px de la posicion original osea de donde puse la etiqueta div
+        osea justito abajo de la div estatico
+        Usar position relative me permite jugar de mejor manera con top bottom left y right
+        IMPORTANTE!!!: Solo se puede usar o top o bottom (no ambas), y con left o right (no con ambas)*/
+        .pos-rel{
+            position: relative;
+            top: 10px;
+            left: 100px;                     
+        }
+
+        /*POSICION ABSOLUTA*/
+        /*Se desplaza de acuerdo al elemento padre que tenga si este tiene posisition relative, y si no tiene se desplaza respecto al body
+        osea la pantalla del documento desde esquina superior izquierda
+        TRABAJA CON TOP RIGHT LEFT Y BOTOMM COMO TODAS LAS POSITION*/
+        .pos-abs{
+            position: absolute;
+            /*Como la div 3 no tiene elemento padre con position relative se va a morir respecto al documento*/
+            top:50px;
+            left: 200px;
+        }
+
+        /*Ahora lo voy a hacer con un padre con position relative*/
+        article, section {
+			width: 700px;
+			height: 200px;
+			color: #FFF;
+			background-color: #222;
+			border: thin solid #FF5700;
+		}
+
+        /*LE PONGO POSITION RELATIVE AL PADRE*/
+        section {
+			position: relative;
+			width: 800px;
+			height: 400px;
+		}
+
+        .pos-abs-con-padre{
+            position: absolute;
+            /*Ahora tiene padre con position relativo asi que se va a mover respecto a ese padre que es la section*/
+            top:150px;
+            left: 100px;
+        }
+
+		/*El posicionamiento fijo como dice nombre lo deja fijo, sirve para cabeceras por ejemplo, las tipicas cabezeras con menu
+		EL POSICIONAMIENTO FIJO SIEMPRE ESTA BASADO EN EL VIEWPORT
+		Los z-index son importantes para decidir quien esta por arriba de quien, el z index por default es 0*/
+		.pos-fix{
+			position: fixed;
+			top: 0;
+			left: 800px;
+		}
+
+		/*El posicionamiento STICKY se comporta como un relativo primero, pero cuando el scroll llega a el y se sigue bajando este se vuelve
+		fijo, como si quedara pegado, despues volves a subir hasta su area de origen y queda ahi como relativo, si bajas de nuevo se pega,
+		este tambien se usa en menus cuando el menu esta abajo de una cabecera por ejemplo y se quiere que se vea siempre*/
+		.pos-sticky{
+			position:sticky;
+			top:0%;
+			left: 800px;
+		}
+
+
+		/*El posicionamiento float left y rigth mandan el elemento lo mas a la izquierda o mas a la derecha posible pero hay que tener cuidado
+		porque rompen el posicionamiento html y los otros elementos de abajo pueden quedar mal porque al hacer flotante comienzan a flotar
+		y se salen del orden, se usa con float:left y float:right*/
+		.pos-float-left{
+			float: left;
+		}
+
+		.pos-float-rigth{
+			float: right;
+		}
+
+		/*con clear:left o rigth o both limpia la flotacion para evitar los problemas que generan*/
+		.clear{
+			clear: both;
+		}
+
+
+
+	</style>
+</head>
+<body>
+	<h1>Tipos de Posicionamiento</h1>
+	<ul>
+		<li>Estático: Es el que viene por defecto un elemento detrás del otro</li>
+		<li>Relativo: Se desplaza respecto de su posición original</li>
+		<li>Absoluto: Se desplaza respecto de la posición del body del documento o del primer elemento padre que tenga y éste sea relativo</li>
+		<li>Fijo: Permite mantener fijo un elemento</li>
+		<li>Pegajoso: Posicionamiento experimental, permite que el elemento sea relativo o fijo dependiendo del area donde se visualiza</li>
+		<li>Flotante: Convierte un elemento en flotante desplazándolo hasta la zona más a la izquierda o más a la derecha de la posición en la 
+			que originalmente se encontraba</li>
+		<li><a href="http://librosweb.es/libro/css/capitulo_5.html" target="_blank">+ info</a></li>
+	</ul>
+	<div>
+		<h2>1 - Estático</h2>
+	</div>
+	<div class="pos-rel">
+		<h2>2 -  Relativo</h2>
+	</div>
+	<div class="pos-abs">
+		<h2>3 - Absoluto con body</h2>
+	</div>
+	<section>
+		<article>
+			<div class="pos-abs-con-padre">
+				<h2>4 - Absoluto con padre relativo</h2>
+			</div>
+		</article>
+	</section>
+	<div class="pos-fix">
+		<h2>5 - Fijo</h2>
+	</div>
+	<div class="pos-sticky">
+		<h2>6 - Pegajoso</h2>
+	</div>
+	<div class="pos-float-left">
+		<h2>7 - Flotante Izquierda</h2>
+	</div>
+	<div class="pos-float-right">
+		<h2>8 - Flotante Derecha</h2>
+	</div>
+	<div class="pos-float-right">
+		<h2>9 - Flotante Derecha</h2>
+	</div>
+	<div class="clear">
+		<h2>10 - con clear para limpiar floats</h2>
+	</div>
+</body>
+</html>

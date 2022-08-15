@@ -1,0 +1,106 @@
+/*
+ancho del 100 para que ocupe todo
+margin de 1rem arriba y abajo automatico a los lados
+al container, solo al container no al fluid porque este va a ocupar todo, le pongo maximo ancho de 1200px asi no crece mas de eso cuando agrando la pantalla
+*/
+.container,
+.container-fluid {
+  display: block;
+  width: 100%;
+  margin: 1rem auto;
+  text-align: left;
+  /*esto del color ya es personal de mircha*/
+  background-color: #ccc;
+}
+
+.container {
+  max-width: 1200px;
+}
+
+/*elementos dentro del container*/
+.item {
+  display: block;
+  text-align: center;
+  background-color: #222;
+}
+
+/*
+  Se propone como reticula 12 columnas tipo bootstrap
+  Los anchos se calculan por regla de 3
+  
+  12col ----> 960px(monitores viejos)
+  n-col ----> ???px
+
+  Por ejempli si quiero que hayan dos cuadros de ancho en total esto quiere decir que un elemento va a ocupar 6 columnas, 6 + 6 = 12, porque quiero dos cuadros entonces son dos cuadros de 6 columnas porque 12 es el total:
+  12col ---> 960px
+  6col ----> xpx 
+
+  x= 480px
+
+  Serian dos cuadros de 480 px
+
+  PERO TODO ESTO ES PARA SISTEMAS MONITORES VIEJOS ABAJO PONGO EL NUEVO METODO CON PORCENTAJES
+
+  NUEVO METODO CON PORCENTAJES:
+    Se propone como reticula 12 columnas tipo bootstrap, los anchos se calculan por regla de 3 siendo la base:
+
+    12col ---> 100% (de la pantalla)
+    n-col ---> x% 
+
+    Por ejemplo si quiero dos cuadros en lo ancho entonces son 6 columnas por elemento, 6 + 6 = 12, como 12 es el total entonces dos cuadros de 6 forman 12, para sacar el ancho en porcentaje de pantalla para 6 columnas se hace:
+
+    12col ---> 100%
+    6col ----> x%  
+
+    x = 50%     Serian dos cuadros de 50% de pantalla, 50% -> 6 columnas
+
+    ahora abajo hago las clases css para representar eso calculando las columnas con la formula
+*/
+
+.col12 {
+  width: 100%;
+}
+
+.col11 {
+  width: 91.66666666666667%;
+}
+
+.col10 {
+  width: 83.33333333333333%;
+}
+
+.col9 {
+  width: 75%;
+}
+
+.col8 {
+  width: 66.66666666666667%;
+}
+
+.col7 {
+  width: 58.33333333333333%;
+}
+
+.col6 {
+  width: 50%;
+}
+
+.col5 {
+  width: 41.66666666666667%;
+}
+
+.col4 {
+  width: 33.33333333333333%;
+}
+
+.col3 {
+  width: 25%;
+}
+
+.col2 {
+  width: 16.66666666666667%;
+}
+
+.col1 {
+  width: 8.333333333333333%;
+}

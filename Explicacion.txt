@@ -1,0 +1,253 @@
+*************************************************************************************************************************************************                                                                                                                                             *
+*     EN LA CARPETA RECURSOS EN EL INDEX TENGO MUCHA TEORIA BIEN ORDENADA Y LINDA, LAS DIAPOSITIVAS DEL VIDEO ESTAN EN ESE INDEX              * 
+************************************************************************************************************************************************
+
+
+
+
+
+
+HTML 5 
+  Se divide en estructura y contenido HTML
+  Estilos CSS
+  Programacion JAVASCRIPT
+
+HTML
+  Lenguaje basado en etiquetas y atributos, nos define estructura y contenido, el contenido es la parte mas importante hay que planear bien la estructura. Trabajar la semantica (que nuestro contenido tenga significado). La semantica de nuestras etiquetas la define el contenido y su distribucion, como los motores de busqueda son ciegos hay que estructurar bien el contenido para que sea mejor posicionado en los resultados de busqueda.
+
+SEMANTICA
+  Declaracion: <!DOCTYPE html>
+
+  ETIQUETAS: semanticas y estructurales 
+    Section: contenido generico estructurado
+    Article: contenido estructural distribuible de manera independiente
+    Aside: contenido secundario relacionado al elemento
+    Nav: seccion relativa a enlaces dentro del documento o pagina
+    Figure: seccion de contenido visual, multiples medios
+    Figcaption: leyenda o pie relativo al contenido visual de figure 
+    Header: contenido introductorio, suele tener elementos de navegacion y encabezados
+    Footer: seccion que contiene informacion acerca del documento o pagina
+    Main: contenido principal
+    Video y Audio
+
+  Hacer scripts antes de cerrar el body es buena practica porque sino tarda mas en cargar
+
+CSS
+  Descendiente: .menu a {}
+  Hijos: .menu > li {}
+  Hermano: section ~ article {}
+  Negacion: :not()
+
+  Unidades de medidas
+    Absolutas: px, pt, pc, mm, in
+    Relativas
+      Al contenedor: % porcentajes
+      Al la tipografia: em (basada en la anchura de la letra m, EM TOMA COMO MEDIDA A BASARSE LA DEL FONT SIZE DEL PADRE), 
+      ex (basada en la altura de la letra x) y rem REM TOMA COMO MEDIDA BASE LA DEL FONT SIZE DEL HTML
+      Al viewport: vw, vh, vmax(entre vw y vh toma el mayor), vmin(entre vw y vh toma el menor)
+
+      100% = 1em = 16px = 12pt
+
+  Patrones: buenas practicas como DRY (Dont repeat yourself)
+    Frameworks como bootstrap
+
+  Buenas Practicas CSS: Definir siempre un font-size en px para el elemento root(html) porque los em y rem se van a basar en este
+                        Usar background-color en vez de solo background porque sino reseteas las otras prop
+                        Mobile first
+                        Ir de lo general a lo particular
+                        Hay imagenes de ordenamiento css en la carpeta del curso
+
+
+JAVASCRIPT: Progrmacion apis etc
+
+
+UNIDAD 3 CSS
+En carpeta 03TecnicasDeMaquetacion esta el ejercicio
+<h1>Tipos de Posicionamiento</h1>
+	<ul>
+		<li>Estático: Es el que viene por defecto un elemento detrás del otro</li>
+		<li>Relativo: Se desplaza respecto de su posición original</li>
+		<li>Absoluto: Se desplaza respecto de la posición del body del documento o del primer elemento padre que tenga y éste sea relativo</li>
+		<li>Fijo: Permite mantener fijo un elemento</li>
+		<li>Pegajoso: Posicionamiento experimental, permite que el elemento sea relativo o fijo dependiendo del area donde se visualiza</li>
+		<li>Flotante: Convierte un elemento en flotante desplazándolo hasta la zona más a la izquierda o más a la derecha de la posición en la que originalmente se encontraba</li>
+		<li><a href="http://librosweb.es/libro/css/capitulo_5.html" target="_blank">+ info</a></li>
+	</ul>
+
+  div: nth-child(n) en css va a buscar el n hijo del body, no importa que diga div adelante
+    Si yo quiero el div tengo que usar el pseudo selector nth-of-type
+  
+  div: nth-of-type(n) ahora si va a buscar el n elemento div del body
+
+VISUALIZACION EN CSS:
+  Visibility: afecta la visualizacion del contenido de una caja. Trabaja solamente sobre el contenido de la caja
+  Display: afecta la visualizacion de la caja entera.
+
+
+    Bloque: Ocupa todo el ancho disponible
+    
+    Línea: Ocupa sólo el ancho requerido
+
+    Ninguno
+
+EN LA CARPETA 03 HAY UNA CARPETA CON CSS'S COMO EL RESET Y ESAS COSAS, PORQUE EL OBJETIVO DEL CURSO ESTE ES HACER UN MICROFRAMEWORK QUE ES LO QUE ESTOY HACIENDO
+
+PARA EL RESET CSS:
+  Mircha para resetear las cajas pone al html con box-sizing: border-box y despues a todos los elementos ya sean hijos anteriores y directos le pone box-sizing: inherit para que hereden el border-box
+  AHORA LA EXPLICACION. se hace esto porque los modelos de caja de forma predeterminada si le meto por ejemplo padding(Que es el espacio por adentro) va a hacer crecer la caja. Si tengo una caja de 50px de ancho y le meto padding a los cuatro lados de 20px entonces la caja va a crecer a 70px = 50 + 20. Osea el contenedor va a crecer y no esta bueno
+  Al poner BORDER BOX al box sizing evito que la caja crezca al usar propiedades como el padding, entonces al tener una caja de 50px y meter padding de 20px el padding va estar bien siendo el espacio dentro y la caja va a seguir con su ancho de 50px
+
+  Cambia la tipografia al html porque no le gusta. Ahora otra cosa importante es definir el font size para el html asi cuando use rem se base en este valor que pone a 16px
+  IMPORTANTE: tambien resetea todos los margin y padding a 0 asi partimos todo de 0 y puedo dar los tamaños que necesite para los elementos, asi los estandarizo porque generelmante los navegadores le ponen diferentes padding y margin por eso los reseteo a 0
+  Tambien centra el texto en el html con text align
+
+
+EL GRID.CSS TIENE LOS ESTILOS PARA TODOS LOS CONTENEDORES (RETICULA):
+  Con fluido se refiere a que va a ocupar todo el ancho osea si agrando la ventana un boton del extremo derecho se va a ir hasta el extremo derecho de la ventana no importa cuanto la agrande
+  Y flexible en cambio crece hasta un limite maximo osea que voy a agrandar la pantalla y el boton se va ir a la derecha pero hasta cierto punto y despues ya no se va mas a la derecha no importa cuanto agrande la pantalla, esto esta bueno para poner menus centrados
+  SE PLANTEA PARA LA RETICULA TENGA 12 COLUMNAS DE ANCHO(como bootstrap)
+
+  Se propone como reticula 12 columnas tipo bootstrap, los anchos se calculan por regla de 3 siendo la base:
+
+    12col ---> 100% (de la pantalla)
+    n-col ---> x% 
+
+    Por ejemplo si quiero dos cuadros en lo ancho entonces son 6 columnas por elemento, 6 + 6 = 12, como 12 es el total entonces dos cuadros de 6 forman 12, para sacar el ancho en porcentaje de pantalla para 6 columnas se hace:
+
+    12col ---> 100%
+    6col ----> x%  
+
+    x = 50%     Serian dos cuadros de 50% de pantalla, 50% -> 6 columnas
+
+TECNICAS DE MAQUETACION CSS:
+  Lo tengo en el layout.css
+
+  Tecnica 1 FLOAT(left/right):  Usos de Float Imágenes mezcladas con texto, Listas ordenadas y desordenadas en columnas
+
+******************** NOTA APARTE E IMPORTANTE **********************************************************************************
+* Las li tienen por defecto dispay list item o algo asi, si se le cambia el display por css a por ejemplo block se va a perder *
+* la viñeta o numero que acompaña a cada elemento de la lista asi que hay que evitar cambiar el display de las li              *
+********************************************************************************************************************************
+
+  Tecnica 2 Display Inline Block: basicamente a los elementos que estan juntos los pone en una misma fila y el resto arriba o abajo
+                                  dependiendo donde estan. PERO IMPORTANTE ENTRE LOS ELEMENTOS JUNTOS PONE UN PEQUEÑO ESPACIO EN BLANCO, HAY QUE TENER EN CUENTA ESO
+                                  PORQUE OCUPA % DEL WIDTH. Para arreglar ese espacio hago un font size 0 al elemento que contiene los items que
+                                  tienen el display inline block entonces estoy eliminando ese espacio en blanco
+
+    ASI COMO HAY INLINE BLOCK HAY INLINE TABLE, QUE HACE EL MISMO COMPORTAMIENTO PERO A TABLAS, SIRVE PARA PONER DOS TABLAS EN UNA FILA
+    Y TAMBIEN INLINE FLEX QUE PONE LOS ELEMENTOS EN UNA MISMA FILA
+
+  Tecnica 3 Display table: le da estilo de tablas a las cajas
+
+  /*BORDER COLLAPSE lo que hace es unir los bordes de las tablas, sirve para no tener dos bordes por celda asi tengo una sola linea*/
+
+
+  Tecnica 4 Display Flex: LA TEORIA QUE ESTA MUY BUENA Y POR JON ESTA EN 7-flex-box.html
+  /*Propiedades de flexbox*/
+			/*para el contenedor se pone display flex o inline flex dependiendo de lo que quiero*
+			Al hacer flex un contenedor todos los elementos que tenga adentro(hijos) se van a apilar dentro del contenedor en una sola linea y para que entren todos le cambia las proporciones automaticamente (width y height)*/
+
+
+VIEWPORT NUNCA OLVIDARSE DEL VIEWPORT (teoria en recursos)
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+
+DARLE SIEMPRE AL HTML FONT SIZE DE 16 PX PORQUE DE AHI VAN A SALIR LOS REMS   
+EMS relativos al padre
+REMS relativos al root (al html)
+
+
+MEDIOS (Teoria en recursos)
+ Las etiquetas para medios son IMG AUDIO VIDEO IFRAME CANVAS SVG PICTURE
+  En el responsive design los medios deben ser flexibles esto quiere que se tiene que adaptar al tamaño del contenedor, para eso se hace este CSS
+
+    img, audio, video, iframe, canvas, svg, picture{
+      max-width: 100%;
+      width: 100%
+      height: auto;
+    }
+
+  Vectores son mejores que las imagenes porque se redimensionan sin pixelearse
+
+  IMG: <img src="img/img.jpg" alt="Texto cuando no se muestra">
+
+
+MEDIA QUERYS: Ya se lo que son, se usan para aplicar estilos en ciertas condiciones como el tamaño de pantalla, la sintaxis es
+  @media only screen and (max-width:XXpx){
+    Estilos CSS
+  }
+
+  Y la otra es
+
+  @media only screen and (min-width:XXpx){
+    Estilos CSS
+  }
+
+Algunos Breakpoints: 
+  Now let’s see some common breakpoints for widths of devices:
+
+  320px — 480px: Mobile devices
+  481px — 768px: iPads, Tablets
+  769px — 1024px: Small screens, laptops
+  1025px — 1200px: Desktops, large screens
+  1201px and more —  Extra large screens, TV
+
+
+En DESKTOP FIRST habria que hacer la version base para mas de 1200 px y despues ir de mayor a menor usando max-width en la media query. 1200px, 1024px, 768px, 480px, 320px
+
+En MOBILE FIRST vamos a empezar haciendo la base en menos 320 para todo dispositivo chico y despues con las media queries y usando min-width vamos a ir adaptando para pantallas mas grandes: min-width: 320px, 480px, 720px, 1024px.
+
+
+
+EN LA CARPETA 04 Elementos Responsive hago los ejercicios de first desktop y first mobile, las explicaciones estan en sus html
+
+  IMAGENES FLEXIBLES
+  *hay que hacer flexibles las imagenes, estas 3 propiedades hacen un medio flexible*/
+		img {
+			max-width: 100%;
+			width: 100%;
+			height: auto;
+		}
+
+
+  MIRCHA EN ESTE VIDEO TRABAJA CON ESOS EM, PERO EN TODOS LADOS USAN PX ASI QUE VOY A USAR PX
+		TODOS ESTOS BREAKPOINTS, ESTILOS GENERALES SON PARA DESKTOP FIRST
+		Estilos Generales +1200px
+		Breakpoints para Responsive Design Desktop First:
+		1200px  1024px  768px  600px  480px  320px 
+		75em    64em    48em   37.5em  30em  20em
+		*/
+
+		/*Comienzo a hacer las media querys para los breakpoints*/
+		@media screen and (max-width: 1200px) {
+			
+		}
+
+
+Media querys con javascript:
+  Para hacer media queris con javascript se usa la funcion window.matchmedia, se lo hace junto con addListener que es parecido al addeventlistener.
+    Un ejemplo: window.matchMedia('(min-width: 768px)')
+                Esta funcion va a devolver un parametro booleano 'matches' que indica si se cumple o no la query que pase
+
+    Entonces una forma de usarlo es asi:
+
+      function mediaQueries(){
+        if (window.matchMedia('(min-width:768px)').matches){
+          //el ancho del viewport es al menos de 768px o más
+        }
+      }
+
+    y llamo al addListener para que cuando ocurra cambios trabaje:
+      window.matchMedia('(min-width:768px)').addListener(mediaQueries);
+
+      Tambien mircha lo que hace es guardar window.matchMedia('(min-width:768px)') en una variable:
+        var mq768 = window.matchMedia('(min-width:768px)')
+      y despues manda el matches a la variable:
+       if (mq768.matches)   (IMPORTANTE ESTO DENTRO DE UNA FUNCION COMO ARRIBA)
+
+       al final llama a la funcion asi
+        mq768.addListener(mediaQueries);
+
+
+*******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************             MIRCHA SACO EL CURSO POR OBSOLETO IGUAL HAY UNO NUEVO QUE VOY A IR VIENDO                              *
+******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************

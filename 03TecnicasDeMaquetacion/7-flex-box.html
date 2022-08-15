@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Flex Box</title>
+	<style>
+		html {
+			padding: 2rem;
+			font-family: sans-serif;
+			font-size: 16px;
+		}
+
+		.container {
+			/*Va usar pixeles para anchos y altos solo para que se entienda mas la explicacion, en realidad se debe trabajar con porcentajes como en los anteriores*/
+			margin: 1rem auto;
+			padding: 1rem;
+			width: 800px;
+			height: 400px;
+			background-color: #CCC;
+			border: thin solid #FF5700;
+
+			/*Propiedades de flexbox*/
+			/*para el contenedor se pone display flex o inline flex dependiendo de lo que quiero*
+			Al hacer flex un contenedor todos los elementos que tenga adentro(hijos) se van a apilar dentro del contenedor en una sola linea y para que entren todos le cambia las proporciones automaticamente (width y height)*/
+
+			/* Establece que una caja y sus hijos son flexibles */
+			display: inline-flex;
+			/* Caja Flexible en línea */
+
+			display: flex;
+			/* Caja Flexible en bloque */
+
+
+			/* Establece como los elementos se acomodan en el eje principal (vertical u horizontal). */
+			/* http://www.evolutionoftheweb.com/?hl=es 
+			El column los pone como en vertical, el row es el por defecto, y los reverse los pone en sentido contrario 1 2 3 4 5 -> 5 4 3 2 1*/
+			flex-direction: column-reverse;
+			flex-direction: column;
+			flex-direction: row-reverse;
+			flex-direction: row;
+
+			/* Una (nowrap) o Varias líneas (wrap y wrap-reverse) No Wrap es el por defecto */
+			/* Si quiero todos los elementos en una unica linea uso nowrap (MODIFICA EL ANCHO AUTOMATICAMENTE)
+			si lo quiero en varias lineas dependiendo del ancho que tenga (NO MODIFICA EL ANCHO AUTOMATICAMENTE) uso wrap o wrap reverse para orden invertido*/
+			flex-wrap: wrap;
+			flex-wrap: wrap-reverse;
+			flex-wrap: nowrap;
+
+			/*Flex-flow es el atajo donde el primer valo corresponde a flex direction y el segundo a flex wrap*/
+			flex-flow: column nowrap;			
+			flex-flow: column wrap;		
+			flex-flow: row wrap;
+			flex-flow: row nowrap;
+			
+
+			/*Justify-content define como se acomodan los elementos en el EJE PRINCIPAL
+			  	Space between mismo espacio entre ellos se distribuyen igualmente en la linea
+				flex-end los apila al final
+				center los apila al centro
+				flex-start los apila al comienzo. Es el que esta por defecto
+				space-around es como space between pero al principio y al final tienen un poco mas de espacio, el resto es igual
+			*/
+			justify-content: space-between;
+			justify-content: flex-end;
+			justify-content: center;			
+			justify-content:space-around;
+			justify-content: flex-start;
+
+
+			/*Align Item y Align content trabajan con el EJE TRANSVERSAL*/
+			/*Align Item define como se acomodan los elementos cuando tenemos UNA LINEA DE ELEMENTOS O (NO WRAP)
+				Flex start los tira al principio del eje transversal, es por defecto
+				Flex-end los tira al final del eje transversal
+				center los apila al centro del eje transversal
+				baseline va a la linea base donde empieza el texto
+				stretch si los ITEMS del contenedor tienen altura en AUTO entonces este valor lo que hace es estirar su altura a todo el
+				tamaño del contenedor en el eje transversal osea que pasan a ocupar toda la altura del contenedor
+			*/			
+			align-items: flex-end;
+			align-items: center;
+			align-items: stretch;
+			align-items: baseline;
+			align-items: flex-start;
+			/*PERO TODAS ESTAS PROP DE ALIGN ITEM NO SIRVEN SI EL FLEX FLOW ESTA EN WRAP, OSEA VARIAS LINEAS DE ELEMENTOS PARA ESTOS CASOS SE
+			USA ALGIN CONTENT*/
+
+			/*Align Content define como se acomodan los elementos cuando tenemos VARIAS LINEAS DE ELEMENTOS (WRAP O WRAP-REVERSE)
+				Flex start los tira al principio del eje transversal es el por defecto
+				Flex end los tira al final del eje transversal
+				center los tira al centro
+				space between distribuye los elementos ocupando los mismos espacios respecto al eje transversal
+				space-around es como space between pero al principio y al final tienen un poco mas de espacio, el resto es igual
+				stretch se dirtibuye respecto a la altura pero no hace mucha diferencia con respecto a los otros y como no entendi no lo usaria tanto
+				YA LO ENTENDI UN POCO MAS DE FORMA GRAFICA ESTA UNA CAPTURA DE PANTALLA EN LA MISMA CARPETA DE ESTE HTML
+				https://css-tricks.com/snippets/css/a-guide-to-flexbox/
+			*/			
+			align-content: flex-end;
+			align-content: center;
+			align-content: space-between;
+			align-content: space-around;
+			align-content: stretch;
+			align-content: flex-start;
+
+		}
+
+		.item {
+			margin: 1rem;
+			width: 250px;
+			/* width: 50px; */
+			/* height: 100px; */
+			height: auto;
+			text-align: center;
+			color: #FFF;
+			background-color: #222;
+
+
+			/*AHORA LAS PROPIEDADES DE LOS HIJOS*/
+			/*Flex basis define el tamaño base del elemento, si el padre tiene flow direction row afecta el ancho, si en cambio tiene flex direction
+			column modifica el alto del elemento*/
+			/* flex-basis: 25%; */
+
+			/*FLEX GROW Y SHRINK FUNCIONA CON ELEMENTOS EN UNA SOLA LINEA O NOWRAP
+			/*Flex grow lo que haces es hacer crecer el elemento cuando este es chico y sobra espacio, crece segun el valor que se le da
+			el valor es proporcional, por defecto es 0 y no acepta negativos
+			ESTE ES SUPER UTIL CUANDO POR EJEMPLO TENGO UNA GRILLA DE 3 ELEMENTOS POR FILA Y EN UNA QUEDA UN SOLO ELEMENTO, ENTONCES
+			CON FLEX GROW EN 1 ESE ELEMENTO CRECE PARA OCUPAR TODO EL ANCHO Y NO QUEDE UN CUADRADITO SOLITO*/
+			/* flex-grow: 1; */
+
+			/*Flex shrink es lo contrario a grow, si el elemento es muy grande se hacae mas chico para entrar en el espacio segun el valor
+			que se le da que tambien es proporcional*/
+			/* flex-shrink: 3; */
+
+			/*LA PROPIEDAD Flex es un atajo de flex-grow, flex-shrink, flex-basis abajo esta mas detallado*/
+			flex: auto; 
+
+			/*Con order voy cambiando como el nombre lo dice el orden de los elementos segun el numero que le ponga, por default es 0*/
+			order: 2;
+
+			/*align self es para alinear un elemente independientemente de los demas, tiene los mismos valores que align items
+			pero la diferencia es que aca agarra de a un solo elemento, no el conjunto por es propiedad de los hijos*/
+
+		}
+
+		/*ejemplo con ultimo elemento*/
+		.item:last-child{
+			/* flex-grow: 1; */
+			/* flex-shrink: 2; */
+
+			/*Con order voy cambiando como el nombre lo dice el orden de los elementos segun el numero que le ponga, por default es 0*/
+			order: -1;
+			
+			/*align self es para alinear un elemente independientemente de los demas, tiene los mismos valores que align items
+			pero la diferencia es que aca agarra de a un solo elemento, no el conjunto por es propiedad de los hijos*/
+			align-self: center;
+			align-self: baseline;
+			align-self: stretch;
+			align-self: flex-end;
+			align-self: flex-start;			
+		}
+
+		
+	</style>
+</head>
+
+<body>
+	<!-- EJE PRINCIPAL ES EL HORIZONTAL, EJE TRANSVERSAL EL VERTICAL -->
+	<h1>Flex Box</h1>
+
+	<section class="container">
+		<article class="item">
+			<h2>1</h2>
+		</article>
+		<article class="item">
+			<h2>2</h2>
+		</article>
+		<article class="item">
+			<h2>3</h2>
+		</article>
+		<article class="item">
+			<h2>4</h2>
+		</article>
+		<article class="item">
+			<h2>5</h2>
+		</article>
+	</section>
+
+	<ol>
+		<li>
+			<h2>Diagrama de Flexbox</h2>
+			<img src="http://bextlan.com/img/para-cursos/flex-direction-terms.svg">
+		</li>
+		<li>
+			<h2>Propiedades del padre</h2>
+			<ul>
+				<li>
+					<h3>Display Flex</h3>
+					<p>
+						Esta propiedad nos permite establecer cuál sera el contenedor de los elementos que serán flexibles. Puede
+						ser de bloque o línea.
+					</p>
+					<code>
+						display: flex | inline-flex;
+					</code>
+				</li>
+				<li>
+					<h3>Flex Direction</h3>
+					<p>
+						Nos permite establecer la dirección en la que se acomodaran nuestros elementos en el eje principal, de forma
+						horizontal (row) o vertical (column).
+					</p>
+					<p>
+						Es importante mencionar que el eje principal siempre dependerá del <a
+							href="http://dev.w3.org/csswg/css-writing-modes-3/#text-flow" target="_blank">modo de escritura</a>
+					</p>
+					<code>
+						flex-direction: row | column | row-reverse | column-reverse ;
+					</code>
+
+				</li>
+				<li>
+					<!--WRAP ES ENVOLVER-->
+					<h3>Flex Wrap</h3>
+					<p>
+						Podemos indicar si todos los elementos estarán en una línea con su máximo ancho posible o establecido
+						(nowrap), o si queremos que respete el ancho de los elementos y éstos se posicionen en varias líneas (wrap o
+						wrap-reverse).
+					</p>
+					<code>
+						flex-wrap: nowrap | wrap | wrap-reverse;
+					</code>
+				</li>
+				<li>
+					<h3>Flex Flow</h3>
+					<p>
+						Es el shorthand de flex-direction y flex-wrap.
+					</p>
+					<code>
+						flex-flow: < Primer valor flex-direction > < Segundo valor flex-wrap >
+					</code>
+				</li>
+				<li>
+					<h3>Justify Content</h3>
+					<p>
+						Define cómo se acomodan los elementos en el eje principal
+					</p>
+					<code>
+						justify-content: flex-end | flex-start | center | space-around | space-between ;
+					</code>
+				</li>
+				<li>
+					<h3>Align Items</h3>
+					<p>
+						Define cómo se acomodan los elementos en el eje transversal para cuando tenemos una línea de elementos
+						(nowrap)
+					</p>
+					<code>
+						align-items: flex-start | flex-end | center | stretch | baseline;
+					</code>
+				</li>
+				<li>
+					<h3>Align Content</h3>
+					<p>
+						Define cómo se acomodan los elementos en el eje transversal para cuando tenemos varias líneas de elementos
+						(wrap o wrap-reverse)
+					</p>
+					<code>
+						align-content: flex-start | flex-end | center | stretch | space-between | space-around ;
+					</code>
+				</li>
+			</ul>
+		</li>
+		<li>
+			<h2>Propiedades del los hijos</h2>
+			<ul>
+				<li>
+					<h3>Flex Basis</h3>
+					<p>
+						Establece el tamaño base que tendrá un elemento flexible. Si el padre es row o row-reverse se modifica el
+						ancho del elemento, si el padre es column o column-reverse se modifica el alto del elemento.
+					</p>
+					<code>
+						flex-basis: px | em | % ;
+					</code>
+				</li>
+				<li>
+					<h3>Flex Grow</h3>
+					<p>
+						Establece el factor de crecimiento que tendrá un elemento en comparacion con los demás, en caso de que sobre
+						espacio en el contenedor y su tamaño sea diminuto, funcionan cuando los elementos están en una sola línea
+						(flex-wrap: nowrap). No acepta números negativos.
+					</p>
+					<code>
+						flex-grow: 1;
+					</code>
+				</li>
+				<li>
+					<h3>Flex Shrink</h3>
+					<p>
+						Establece el factor de reducción que tendrá un elemento a comparacion con los demás, en caso de que sobre
+						espacio en el contenedor y su tamaño sea excesivo, funcionan cuando los elementos están en una sola línea de
+						elementos (flex-wrap: nowrap). No acepta números negativos.
+					</p>
+					<code>
+						flex-shrink:1;
+					</code>
+				</li>
+				<li>
+					<h3>Flex</h3>
+					<p>
+						Atajo de flex-grow, flex-shrink, flex-basis
+					</p>
+					<code>
+						flex:1 1 50%;
+					</code>
+					<p>
+						Tiene muchas variantes
+					</p>
+
+
+					<ul>
+						<li>
+							<pre>flex:<'flex-grow'>					Cuando tenemos una línea (flex-wrap:nowrap)</pre>
+						</li>
+						<li>
+							<pre>flex: <'flex-basis'>					Cuando tenemos varias líneas (flex-wrap:wrap)</pre>
+						</li>
+						<li>
+							<pre>flex: <'flex-grow'> <'flex-basis'>			Cuando tenemos una línea (flex-wrap:nowrap)</pre>
+						</li>
+						<li>
+							<pre>flex: <'flex-grow'> <'flex-shrink'>			Cuando tenemos varias líneas (flex-wrap:wrap)</pre>
+						</li>
+						<li>
+							<pre>flex: <'flex-grow'> <'flex-shrink'> <'flex-basis'>	Se especifican los tres valores</pre>
+						</li>
+						<li>
+							<pre>flex: none o ( 0 0 auto )				Ninguno</pre>
+						</li>
+						<li>
+							<pre>flex: initial o ( 0 auto )				Inicial</pre>
+						</li>
+						<li>
+							<pre>flex: auto o ( 1 1 auto )				Automático</pre>
+						</li>
+						<li>
+							<pre>flex: inherit						Heredado</pre>
+						</li>
+					</ul>
+				</li>
+				<li>
+					<h3>Order</h3>
+					<p>
+						Establece el orden que tendrá un elemento en comparacion a otros. Acepta números positivos y negativos.
+					</p>
+					<code>
+						order: n;
+					</code>
+				</li>
+				<li>
+					<h3>Align Self</h3>
+					<p>
+						Nos permite alínear un elemento independientemente de los demás, mismos valores que align-items
+					</p>
+					<code>
+						align-self: flex-start | flex-end | center | stretch | baseline ;
+					</code>
+				</li>
+			</ul>
+		</li>
+		<li>
+			<h2>Más info</h2>
+			<ul>
+				<li><a href="http://caniuse.com/#search=flex" target="_blank">Puedo Usarlo</a></li>
+				<li><a href="http://www.w3.org/TR/css-flexbox/" target="_blank">Más info W3C</a></li>
+				<li><a href="https://developer.mozilla.org/es/docs/Web/Guide/CSS/Cajas_flexibles" target="_blank">Más info
+						MDN</a></li>
+				<li><a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/" target="_blank">Más info CSS Tricks
+						***</a></li>
+				<li><a href="https://css-tricks.com/almanac/properties/f/flex/" target="_blank">Más info propiedades CSS Tricks
+						***</a></li>
+				<li><a href="https://scotch.io/tutorials/a-visual-guide-to-css3-flexbox-properties" target="_blank">Más info
+						Scotch ***</a></li>
+				<li><a href="http://zomigi.com/blog/rwd-flexbox/" target="_blank">Más info Zomigi</a></li>
+				<li><a href="http://zomigi.com/blog/flexbox-presentation/" target="_blank">Zomigi Presentation</a></li>
+				<li><a href="http://zomigi.com/downloads/Putting-Flexbox-Into-Practice_Blend-Conf_130907.pdf"
+						target="_blank">Zomigi Slides</a></li>
+				<li><a href="http://the-echoplex.net/flexyboxes/" target="_blank">Generador de Flexbox</a></li>
+				<li><a href="http://philipwalton.github.io/solved-by-flexbox/" target="_blank">Resuelto con Flexbox</a></li>
+			</ul>
+		</li>
+	</ol>
+</body>
+
+</html>

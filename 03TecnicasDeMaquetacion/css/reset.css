@@ -1,0 +1,51 @@
+/*
+Mircha para resetear las cajas pone al html con box-sizing: border-box y despues a todos los elementos ya sean hijos anteriores y directos le pone box-sizing: inherit para que hereden el border-box
+  AHORA LA EXPLICACION. se hace esto porque los modelos de caja de forma predeterminada si le meto por ejemplo padding(Que es el espacio por adentro) va a hacer crecer la caja. Si tengo una caja de 50px de ancho y le meto padding a los cuatro lados de 20px entonces la caja va a crecer a 70px = 50 + 20. Osea el contenedor va a crecer y no esta bueno
+  Al poner BORDER BOX al box sizing evito que la caja crezca al usar propiedades como el padding, entonces al tener una caja de 50px y meter padding de 20px el padding va estar bien siendo el espacio dentro y la caja va a seguir con su ancho de 50px
+
+
+Cambia la tipografia al html porque no le gusta. Ahora otra cosa importante es definir el font size para el html asi cuando use rem se base en este valor que pone a 16px
+IMPORTANTE: tambien resetea todos los margin y padding a 0 asi partimos todo de 0 y puedo dar los tamaños que necesite para los elementos, asi los estandarizo porque generelmante los navegadores le ponen diferentes padding y margin por eso los reseteo a 0
+Tambien centra el texto en el html con text align
+*/
+
+html {
+  box-sizing: border-box;
+  font-family: sans-serif;
+  font-size: 16px;
+  text-align: center;
+  /*esto de los colores es personal de mircha*/
+  background-color: #205081;
+  color: #fff;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+  /*esto del font-size lo usa en este video, pero en los cursos mas nuevo no y yo tampoco porque sino hay
+  que estar cambiando manualmente el font size a los h1 h2 h3... etc*/
+  font-size: 1rem;
+}
+
+/*ESTO ES YA ES MAS PERSONAL DE MIRCHA QUE PONE LOS COLORES QUE LE GUSTAN, YA ESTA PARTE NO TENDRIA QUE COPIARME PARA RESETEAR*/
+a {
+  color: #ff5700;
+}
+a:hover {
+  color: #fff;
+}
+h1 {
+  font-size: 2rem;
+}
+h2 {
+  font-size: 1.5rem;
+}
+
+li {
+  margin: 1rem;
+  list-style-type: inherit;
+  list-style-position: inside;
+}

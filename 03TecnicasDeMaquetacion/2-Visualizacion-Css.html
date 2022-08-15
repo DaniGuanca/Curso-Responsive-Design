@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Visualización CSS</title>
+  <style>
+    html {
+      font-family: sans-serif;
+      font-size: 16px;
+    }
+
+    .numbers li {
+      width: 100px;
+      height: 100px;
+      text-align: center;
+      color: #FFF;
+      background-color: #205081;
+      border: thin solid #FF5700;
+    }
+
+    /*quinto elemento hijo de numbers*/
+    .numbers li:nth-child(5) {
+      /*VISIBILITY Trabaja sobre el contenido del contenedor
+      VA A DESAPERECER EL CONTENIDO PERO LA li VA A SEGUIR PORQUE VA A QUEDAR EL HUECO*/
+      visibility: hidden;
+    }
+
+    .numbers li:nth-child(8) {
+      /*DISPLAY trabaja sobre la caja entera
+      DESAPARECE TODA LA CAJA, EN ESTE CASO LA li YA NO VA A HABER NI HUECO DIRECTAMENTE NO MUESTRA NADA DE ELLA*/
+      display: none;
+    }
+
+    .basics li:nth-child(1) div {
+      /*LA DIV COMO DISPLAY PREDERTEMINADO TIENE DISPLAY BLOCK COMO LA MAYORIA DE LOS CONTROLES
+      El display BLOCK usa todo el ancho de la pantalla entonces al pintar el fondo va a pintar todo el ancho de la pantalla donde esta
+      el elemento*/
+      background-color: #FF5700;
+    }
+
+    .basics li:nth-child(2) span {
+      /*TODO LO QUE SEA EDICION DE TEXTO COMO SPAN STRONG SMALL ETC, IMAGENES Y VIDEOS, I FRAMES TIENEN POR DEFECTO DISPLAY LINE
+      En cambio el diplay LINE solamente usa el espacio ocupado por el elemento. Al pintar el fondo de un color se pinta solamente el
+      espacio que ocupa el elemento*/
+      background-color: #205081;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Tipos de Visualización</h1>
+  <ul>
+    <li><a href="http://www.w3schools.com/cssref/pr_class_visibility.asp" target="_blank">Visibility</a>: Afecta la
+      visualización del contenido de una caja</li>
+    <li><a href="http://www.w3schools.com/cssref/pr_class_display.asp" target="_blank">Display</a>: Afecta la
+      visualización de la caja</li>
+  </ul>
+  <ul class="numbers">
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+    <li>6</li>
+    <li>7</li>
+    <li>8</li>
+    <li>9</li>
+  </ul>
+  <h2>Tipos de Display Básicos</h2>
+  <ul class="basics">
+    <li>
+      <div>Bloque: Ocupa todo el ancho disponible</div>
+    </li>
+    <li><span>Línea: Ocupa sólo el ancho requerido</span></li>
+    <li>
+      <div>Ninguno</div>
+    </li>
+  </ul>
+  <h2>Tipos de Display para maquetar</h2>
+  <ul>
+    <li>inline-block</li>
+    <li>table</li>
+    <li>flex</li>
+  </ul>
+</body>
+
+</html>

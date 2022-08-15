@@ -1,0 +1,57 @@
+h1, h2, h3{ margin: 1rem auto;}
+
+.container{padding:1rem}
+
+.item{
+    /*La altura depende del contenido pero como tengo una sola letra le doy mas altura*/
+    height:100px;
+    padding: 1rem;
+    font-size: 2rem;
+    border: thin solid #FF5700;
+}
+
+.float-usos{
+    text-align:left;
+    background-color: #222;
+}
+
+.float-usos p{
+    font-size:2rem;
+}
+
+.lista li:nth-child(odd){
+    /*
+     esto no debe hacerse porque a cambiar el display a una li pierde la viñeta o numero que la acompaña
+    display: inline-block;
+    */
+
+    float: left;
+    width: 40%;
+}
+
+.lista li:nth-child(even){
+    /*
+     esto no debe hacerse porque a cambiar el display a una li pierde la viñeta o numero que la acompaña
+    display: inline-block;
+    */
+
+    float: right;
+    width: 40%;
+}
+
+/*ASI COMO HAY INLINE BLOCK HAY INLINE TABLE, QUE HACE EL MISMO COMPORTAMIENTO PERO A TABLAS, SIRVE PARA PONER DOS TABLAS EN UNA FILA*/
+table{
+    display: inline-table;
+    margin: auto;
+    background-color: #CCC;
+    border: thin solid #FF5700;
+    /*Border collapse lo que hace es unir los bordes de las tablas, sirve para no tener dos bordes por celda asi tengo una sola linea*/
+    border-collapse: collapse;
+}
+
+td{
+    padding: 1rem;
+    font-size: 2rem;
+    background-color: #222;
+    border: thin solid #FF5700;
+}
